@@ -27,7 +27,7 @@ namespace ClientServerApp
 
                 SqlCommand viewClient = new SqlCommand(qc, con);
                 SqlDataReader drC = viewClient.ExecuteReader();
-
+                Console.WriteLine("=================================");
                 Console.WriteLine("Client List:");
                 Console.WriteLine("=================================");
                 while (drC.Read())
@@ -107,7 +107,7 @@ namespace ClientServerApp
                     Console.WriteLine("New Client Inserted Successfully:");
                     Console.WriteLine("=================================");
                     Console.WriteLine(6011 + " SET_CLIENT_INFO_REPLY ID=" + _id
-                   + " COUNTER=" + counter + " STATUS =" + 0);
+                   + " COUNTER=" + counter + " STATUS=" + 0);
 
                     int intMesSpend = Convert.ToInt32(details[5]);
                     int intCallSpend = Convert.ToInt32(details[6]);
@@ -126,7 +126,8 @@ namespace ClientServerApp
 
         public void insertClientDashboard()
         {
-            Console.WriteLine("Add Customer:");
+            Console.WriteLine("=================================");
+            Console.WriteLine("Add Customer - You can return to dashboard in any step you enter 'exit'");
             Console.WriteLine("=================================");
             for (int i = 0; i < details.Length; i++)
             {
@@ -139,6 +140,10 @@ namespace ClientServerApp
                     {
                         Console.WriteLine("Value cannot be empty, please enter again.");
                         details[i] = Console.ReadLine();
+                    }
+                    else if(details[i].Equals("exit"))
+                    {
+                        p.dashboardSelection();
                     }
                     else if (!details[i].Equals(""))
                     {
@@ -162,7 +167,7 @@ namespace ClientServerApp
 
                 SqlCommand viewClient = new SqlCommand(qc, con);
                 SqlDataReader drC = viewClient.ExecuteReader();
-
+                Console.WriteLine("=================================");
                 Console.WriteLine("Client Spends List:");
                 Console.WriteLine("=================================");
                 while (drC.Read())

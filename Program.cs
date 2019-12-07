@@ -124,12 +124,12 @@ namespace ClientServerApp
             Console.WriteLine("----------------------------------");
             Console.WriteLine("Please select one of the options below:");
             Console.WriteLine("=================================");
-            Console.WriteLine("(1) Get client details");
-            Console.WriteLine("(2) Insert new client");
-            Console.WriteLine("(3) Get service details");
-            Console.WriteLine("(4) Insert new service");
-            Console.WriteLine("(5) Get all clients");
-            Console.WriteLine("(6) Get all services");
+            Console.WriteLine("(1) Get all clients");
+            Console.WriteLine("(2) Get client details");
+            Console.WriteLine("(3) Add new client");
+            Console.WriteLine("(4) Get all services");
+            Console.WriteLine("(5) Get service details");
+            Console.WriteLine("(6) Add new service");
             Console.WriteLine("(7) Get all spends");
             Console.WriteLine("(8) Exit application");
             Console.WriteLine("=================================");
@@ -140,36 +140,38 @@ namespace ClientServerApp
             {
                 case "1":
                     Console.Clear();
+                    appClient.getAllClients();
+                    p.returnToDashboard();
+                    break;
+                case "2":
+                    Console.Clear();
                     Console.Clear();
                     Console.WriteLine("=================================");
                     Console.WriteLine("Client Details:");
                     appService.getClientInfoReply();
                     p.returnToDashboard();
                     break;
-                case "2":
+                case "3":
                     Console.Clear();
                     appClient.setClientInfo();
                     p.returnToDashboard();
                     break;
-                case "3":
-                    Console.Clear();
-                    appService.getServiceInfoReply();
-                    p.returnToDashboard();
-                    break;
                 case "4":
                     Console.Clear();
-                    appService.setServiceInfo();
-
+                    appService.getAllServices();
                     p.returnToDashboard();
                     break;
                 case "5":
                     Console.Clear();
-                    appClient.getAllClients();
+                    Console.WriteLine("=================================");
+                    Console.WriteLine("Service Details:");
+                    appService.getServiceInfoReply();
                     p.returnToDashboard();
                     break;
                 case "6":
                     Console.Clear();
-                    appService.getAllServices();
+                    appService.setServiceInfo();
+
                     p.returnToDashboard();
                     break;
                 case "7":

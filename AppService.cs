@@ -89,18 +89,22 @@ namespace ClientServerApp
                 }
 
                 if (status == 1)
+                {
+                    Console.WriteLine("No Client found.");
+                    Console.WriteLine("=================================");
                     Console.WriteLine(6001 + " GET_CLIENT_INFO_REPLY STATUS=" + status
-                            + " ID="
-                            + " FIRSTNAME=" 
-                            + " LASTNAME="
-                            + " PHONE=" 
-                            + " ADDRESS="
-                            + " SERVICENAME="
-                            + " SERVICEDESC="
-                            + " TOTALSPEND="
-                            + " CALLSPEND="
-                            + " MESSAGESPEND="
-                            + " COUNTER=" + counter);
+                        + " ID="
+                        + " FIRSTNAME="
+                        + " LASTNAME="
+                        + " PHONE="
+                        + " ADDRESS="
+                        + " SERVICENAME="
+                        + " SERVICEDESC="
+                        + " TOTALSPEND="
+                        + " CALLSPEND="
+                        + " MESSAGESPEND="
+                        + " COUNTER=" + counter);
+                }
             }
             catch (SqlException x)
             {
@@ -159,11 +163,15 @@ namespace ClientServerApp
                 }
 
                 if (status == 1)
+                {
+                    Console.WriteLine("=================================");
+                    Console.WriteLine("No Service found.");
                     Console.WriteLine(6001 + " GET_SERVICE_INFO_REPLY STATUS=" + status
                             + " ID="
                             + " SERVICENAME="
                             + " SERVICEDESCRIPTION="
                             + " COUNTER=" + counter);
+                }
             }
             catch (SqlException x)
             {
@@ -185,7 +193,7 @@ namespace ClientServerApp
 
                 SqlCommand viewClient = new SqlCommand(qc, con);
                 SqlDataReader drC = viewClient.ExecuteReader();
-
+                Console.WriteLine("=================================");
                 Console.WriteLine("Service List:");
                 Console.WriteLine("=================================");
                 while (drC.Read())
@@ -271,7 +279,8 @@ namespace ClientServerApp
 
         public void insertServiceDashboard()
         {
-            Console.WriteLine("Add Service:");
+            Console.WriteLine("=================================");
+            Console.WriteLine("Add Service - You can return to dashboard in any step you enter 'exit'");
             Console.WriteLine("=================================");
             for (int i = 0; i < details.Length; i++)
             {
@@ -284,6 +293,10 @@ namespace ClientServerApp
                     {
                         Console.WriteLine("Value cannot be empty, please enter again.");
                         details[i] = Console.ReadLine();
+                    }
+                    else if (details[i].Equals("exit"))
+                    {
+                        p.dashboardSelection();
                     }
                     else if (!details[i].Equals(""))
                     {
