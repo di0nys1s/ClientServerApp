@@ -6,7 +6,6 @@ namespace ClientServerApp
 {
     public class AppClient
     {
-        //
         SqlConnection con;
         static string fN = "First Name", lN = "Last Name", add = "Address", ph = "Phone", sid = "Service ID", mS = "Message Spend", cS = "Call Spend";
         Program p = new Program();
@@ -183,7 +182,7 @@ namespace ClientServerApp
                         + " CALLSPEND=" + callSpend
                         + " MESSAGESPEND=" + messageSpend
                         + " TOTALSPEND=" + totalSpend
-                        +" CLIENTID=" + id);
+                        +" CLIENTID=" + clientId);
                 }
             }
             catch (SqlException x)
